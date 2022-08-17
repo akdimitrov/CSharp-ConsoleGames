@@ -28,7 +28,7 @@ namespace FallingWords
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     if (key.Key == ConsoleKey.Escape)
                     {
-                        PrintGameOver(ConsoleColor.Red);
+                        PrintGameOver();
                         AskForRestart();
                     }
 
@@ -42,7 +42,7 @@ namespace FallingWords
 
                     if (!wordPool.IsMoving())
                     {
-                        PrintGameOver(ConsoleColor.Red);
+                        PrintGameOver();
                         AskForRestart();
                     }
                 }
@@ -82,7 +82,7 @@ namespace FallingWords
 
             if (seconds == 0)
             {
-                PrintGameOver(ConsoleColor.Green);
+                PrintWellDone();
                 AskForRestart();
             }
         }
@@ -104,9 +104,20 @@ namespace FallingWords
             }
         }
 
-        private void PrintGameOver(ConsoleColor color)
+        private void PrintWellDone()
         {
-            Console.ForegroundColor = color;
+            Console.ForegroundColor = ConsoleColor.Green;
+            int row = field.TopY / 2 - 1;
+            int col = field.LeftX / 2 - 6;
+            Write("╔═════════╗", row, col);
+            Write("║ Well    ║", row + 1, col);
+            Write("║   done! ║", row + 2, col);
+            Write("╚═════════╝", row + 3, col);
+        }
+
+        private void PrintGameOver()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
             int row = field.TopY / 2 - 1;
             int col = field.LeftX / 2 - 6;
             Write("╔═════════╗", row, col);
