@@ -67,7 +67,6 @@ affect
 afford
 afraid
 African
-African-American
 after
 afternoon
 again
@@ -85,7 +84,6 @@ ah
 ahead
 aid
 aide
-AIDS
 aim
 air
 aircraft
