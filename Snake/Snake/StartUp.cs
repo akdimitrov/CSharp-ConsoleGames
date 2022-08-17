@@ -14,8 +14,8 @@ namespace SnakeGame
         {
             Console.Title = "Snake v1.0";
             Console.OutputEncoding = Encoding.Unicode;
-            Console.SetWindowSize(FieldCols, FieldRows + 3);
-            Console.SetBufferSize(FieldCols, FieldRows + 3);
+            Console.SetWindowSize(FieldCols, FieldRows + 4);
+            Console.SetBufferSize(FieldCols, FieldRows + 4);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
