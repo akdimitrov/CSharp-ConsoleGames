@@ -22,8 +22,8 @@ namespace Tetris
             this.Frame = 0;
             FramesToMoveFigure = 16;
 
-            Console.SetWindowSize(consoleCols, consoleRows);
-            Console.SetBufferSize(consoleCols, consoleRows);
+            Console.SetWindowSize(consoleCols, consoleRows + 1);
+            Console.SetBufferSize(consoleCols, consoleRows + 1);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "Tetris";
