@@ -1,4 +1,7 @@
 ﻿using System;
+using FallingWords.Core;
+using FallingWords.Enums;
+using FallingWords.GameObjects;
 
 namespace FallingWords
 {
@@ -6,14 +9,20 @@ namespace FallingWords
     {
         public static void Main()
         {
+            int fieldCols = 60;
+            int fieldRows = 20;
+
             Console.Title = "Falling Words v1.0";
             Console.CursorVisible = false;
-            int fieldRows = 20;
-            int fieldCols = 60;
-            Level level = Level.Medium;  // Easy, Medium, Hard
+            Console.SetWindowSize(fieldCols, fieldRows + 1);
+            Console.SetBufferSize(fieldCols, fieldRows + 1);
+
+            Menu menu = new Menu(fieldCols, fieldRows);
+            Level level = (Level)menu.Run();
 
             Field field = new Field(fieldCols, fieldRows);
-            Engine engine = new Engine(field, level);
+            WordPool wordPool = new WordPool(field, level);
+            Engine engine = new Engine(field, wordPool);
             engine.Run();
         }
     }
