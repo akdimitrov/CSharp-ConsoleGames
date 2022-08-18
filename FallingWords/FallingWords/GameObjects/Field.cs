@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FallingWords
+namespace FallingWords.GameObjects
 {
     public class Field : Point
     {
@@ -8,11 +8,6 @@ namespace FallingWords
 
         public Field(int leftX, int topY) : base(leftX, topY)
         {
-            Console.WindowHeight = TopY + 1;
-            Console.WindowWidth = LeftX;
-            Console.BufferHeight = TopY + 1;
-            Console.BufferWidth = LeftX;
-
             InitializeField();
         }
 

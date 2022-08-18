@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FallingWords.Enums;
+using FallingWords.Utilities;
 
-namespace FallingWords
+namespace FallingWords.GameObjects
 {
     public class WordPool
     {

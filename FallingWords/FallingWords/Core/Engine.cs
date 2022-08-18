@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading;
+using FallingWords.Enums;
+using FallingWords.GameObjects;
 
-namespace FallingWords
+namespace FallingWords.Core
 {
-    public class Engine
+    public class Engine : IEngine
     {
         private const int SleepTime = 40;
         private const int FramesToMove = 22;
@@ -13,10 +15,10 @@ namespace FallingWords
         private readonly Field field;
         private readonly WordPool wordPool;
 
-        public Engine(Field field, Level level)
+        public Engine(Field field, WordPool wordPool)
         {
             this.field = field;
-            wordPool = new WordPool(field, level);
+            this.wordPool = wordPool;
         }
 
         public void Run()
@@ -96,6 +98,7 @@ namespace FallingWords
             if (input == "y")
             {
                 Console.Clear();
+                Console.ResetColor();
                 StartUp.Main();
             }
             else

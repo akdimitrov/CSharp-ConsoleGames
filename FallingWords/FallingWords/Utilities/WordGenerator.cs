@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using FallingWords.GameObjects;
 
-namespace FallingWords
+namespace FallingWords.Utilities
 {
     class WordGenerator
     {
@@ -11,7 +12,7 @@ namespace FallingWords
 
         public WordGenerator(Field field)
         {
-            using (StreamReader reader = new StreamReader("../../../words.txt"))
+            using (StreamReader reader = new StreamReader("../../../Utilities/words.txt"))
             {
                 words = reader.ReadToEnd().Split(Environment.NewLine);
             }

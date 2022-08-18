@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FallingWords
+namespace FallingWords.GameObjects
 {
     public class Word : Point
     {

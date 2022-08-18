@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FallingWords
+namespace FallingWords.GameObjects
 {
     public abstract class Point
     {
@@ -18,6 +18,12 @@ namespace FallingWords
         {
             Console.SetCursorPosition(leftX, topY);
             Console.Write(symbol);
+        }
+
+        public void Draw(int leftX, int topY, string text)
+        {
+            Console.SetCursorPosition(leftX, topY);
+            Console.Write(text);
         }
     }
 }

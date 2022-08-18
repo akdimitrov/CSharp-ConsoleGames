@@ -1,9 +1,9 @@
-﻿namespace FallingWords
+﻿namespace FallingWords.Enums
 {
     public enum Level
     {
         Easy,
-        Medium,
+        Normal,
         Hard
     }
 }
