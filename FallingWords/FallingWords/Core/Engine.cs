@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using FallingWords.Enums;
 using FallingWords.GameObjects;
 
 namespace FallingWords.Core
@@ -58,29 +57,29 @@ namespace FallingWords.Core
 
         private void PrintStats()
         {
-            Console.SetCursorPosition(3, 1);
-            Console.Write($"Score: {wordPool.Score}");
-            Console.SetCursorPosition(field.LeftX - 12, 1);
-            Console.Write($"Words: {wordPool.CorrectWords}");
+            Write($"Score: {wordPool.Score}", 3, 1);
+            Write($"Words: {wordPool.CorrectWords}", field.LeftX - 12, 1);
         }
 
         private void PrintTime()
         {
-            Console.SetCursorPosition(field.LeftX / 2 - 2, 1);
+            string time = string.Empty;
             if (seconds >= 60)
             {
-                Console.Write($"{seconds / 60}:{seconds % 60:d2}");
+                time = $"{seconds / 60}:{seconds % 60:d2}";
             }
             else if (seconds > 4)
             {
-                Console.Write($"0:{seconds:d2}");
+                time = $"0:{seconds:d2}";
             }
             else
             {
                 Console.ForegroundColor = seconds % 2 == 0 ? ConsoleColor.Red : ConsoleColor.White;
-                Console.Write($"0:{seconds:d2}");
-                Console.ForegroundColor = ConsoleColor.White;
+                time = $"0:{seconds:d2}";
             }
+
+            Write(time, field.LeftX / 2 - 2, 1);
+            Console.ForegroundColor = ConsoleColor.White;
 
             if (seconds == 0)
             {
@@ -91,11 +90,9 @@ namespace FallingWords.Core
 
         private void AskForRestart()
         {
-            Console.SetCursorPosition(2, 3);
-            Console.Write("Would you like to continue? (y/n) ");
-
+            Write("Would you like to continue? (y/n) ", 2, 3);
             string input = Console.ReadLine();
-            if (input == "y")
+            if (input.ToLower() == "y")
             {
                 Console.Clear();
                 Console.ResetColor();
@@ -112,10 +109,10 @@ namespace FallingWords.Core
             Console.ForegroundColor = ConsoleColor.Green;
             int row = field.TopY / 2 - 1;
             int col = field.LeftX / 2 - 6;
-            Write("╔═════════╗", row, col);
-            Write("║ Well    ║", row + 1, col);
-            Write("║   done! ║", row + 2, col);
-            Write("╚═════════╝", row + 3, col);
+            Write("╔═════════╗", col, row);
+            Write("║ Well    ║", col, row + 1);
+            Write("║   done! ║", col, row + 2);
+            Write("╚═════════╝", col, row + 3);
         }
 
         private void PrintGameOver()
@@ -123,15 +120,15 @@ namespace FallingWords.Core
             Console.ForegroundColor = ConsoleColor.Red;
             int row = field.TopY / 2 - 1;
             int col = field.LeftX / 2 - 6;
-            Write("╔═════════╗", row, col);
-            Write("║ Game    ║", row + 1, col);
-            Write("║   over! ║", row + 2, col);
-            Write("╚═════════╝", row + 3, col);
+            Write("╔═════════╗", col, row);
+            Write("║ Game    ║", col, row + 1);
+            Write("║   over! ║", col, row + 2);
+            Write("╚═════════╝", col, row + 3);
         }
 
-        private void Write(string text, int row, int col)
+        private void Write(string text, int leftX, int topY)
         {
-            Console.SetCursorPosition(col, row);
+            Console.SetCursorPosition(leftX, topY);
             Console.Write(text);
         }
     }

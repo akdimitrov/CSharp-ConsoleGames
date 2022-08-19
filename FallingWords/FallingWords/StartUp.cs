@@ -14,14 +14,15 @@ namespace FallingWords
 
             Console.Title = "Falling Words v1.0";
             Console.CursorVisible = false;
-            Console.SetWindowSize(fieldCols, fieldRows + 1);
-            Console.SetBufferSize(fieldCols, fieldRows + 1);
+            Console.SetWindowSize(fieldCols, fieldRows + 2);
+            Console.SetBufferSize(fieldCols, fieldRows + 2);
 
             Menu menu = new Menu(fieldCols, fieldRows);
             Level level = (Level)menu.Run();
 
             Field field = new Field(fieldCols, fieldRows);
             WordPool wordPool = new WordPool(field, level);
+
             Engine engine = new Engine(field, wordPool);
             engine.Run();
         }

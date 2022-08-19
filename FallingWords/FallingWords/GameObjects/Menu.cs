@@ -17,9 +17,9 @@ namespace FallingWords.GameObjects
         private const string Footer = "more at https://github.com/akdimitrov";
         private const string Prompt = "Select Difficulty Level";
 
-        private int leftX;
-        private int topY;
-        private string[] levelOptions;
+        private readonly int leftX;
+        private readonly int topY;
+        private readonly string[] levelOptions;
         private int selectedIndex;
 
         public Menu(int leftX, int topY) : base(leftX, topY)
@@ -33,12 +33,13 @@ namespace FallingWords.GameObjects
         public int Run()
         {
             ConsoleKey pressdKey;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Draw(this.leftX - Prompt.Length / 2, 0, GameNameLogo);
+            Draw(this.leftX - Prompt.Length / 2, this.topY - levelOptions.Length, Prompt);
+            Draw(LeftX - Footer.Length - 1, TopY, Footer);
+
             do
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Draw(this.leftX - Prompt.Length / 2, 0, GameNameLogo);
-                Draw(LeftX - Footer.Length - 1, TopY, Footer);
                 DisplayOptions();
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
@@ -69,8 +70,6 @@ namespace FallingWords.GameObjects
 
         private void DisplayOptions()
         {
-            Draw(this.leftX - Prompt.Length / 2, this.topY - levelOptions.Length, Prompt);
-
             for (int i = 0; i < levelOptions.Length; i++)
             {
                 string currentOption = levelOptions[i];
